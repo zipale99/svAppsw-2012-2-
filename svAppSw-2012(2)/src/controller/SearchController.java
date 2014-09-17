@@ -1,5 +1,9 @@
 package controller;
 
+import java.util.ArrayList;
+
+import decorator.User;
+import composite.*;
 import resources.*;
 
 public class SearchController {
@@ -7,9 +11,9 @@ public class SearchController {
 	/**
 	 * riempie un ArrayList contenente tutte le attivita presenti nel DB
 	 */
-	public static ElencoAttivitaBean cercaAttivita(){		
+	/*public static ElencoAttivitaBean cercaAttivita(){		
 		return ServiceDB.riempiAttDaDB();
-	}
+	}*/
 	
 	/**
 	 * riempie un ArrayList contenente tutti gli itinerari presenti nel DB aventi startLoc ed endLoc
@@ -17,8 +21,8 @@ public class SearchController {
 	 * @param endLoc
 	 * @return
 	 */
-	public static ElencoItineraryBean cercaItinerari(String startLoc,String endLoc) {
-		return ServiceDB.riempiItDaDB(startLoc,endLoc);
+	public static ArrayList<Itinerary> cercaItinerari(User user) {
+		return ServiceDB.riempiItDaDB(user);
 	}
 	
 	/**

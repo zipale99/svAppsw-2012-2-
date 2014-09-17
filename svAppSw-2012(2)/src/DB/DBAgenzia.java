@@ -15,7 +15,7 @@ public class DBAgenzia {
 	        String create = "CREATE TABLE utenti("+
 	         				"username VARCHAR(30),"+
 	         				"password VARCHAR(30),"+
-	         				"ruole VARCHAR(30),"+  
+	         				"ruolo VARCHAR(30),"+  
 	         			
 	         				"PRIMARY KEY (username))";
 	         	
@@ -113,19 +113,20 @@ public class DBAgenzia {
 	 	        //voluta personalizzazione nella tabella activity_stay e opzioni_pers
 	 	        	create ="CREATE TABLE stay("+
 	 	        			"idStay INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"+
-	 		    	 		"idStayTemplate integer not null,"+
-	 		    	   	    "durata VARCHAR(30),"+
+	 		    	 		"idItinerario integer not null"+
+	 	        			"idStayTemplate integer not null,"+
+	 		    	   	    "timeOffsea<t integer not null,"+
+	 	        			"prezzo float(10) not null,"+
 	 		    	    		        
 	 		     		    "PRIMARY KEY (idStay),"+
+	 		     		    "FOREIGN KEY (idItinerario) REFERENCES Itinerario(idItinerario),"+
 	 		    	    	"FOREIGN KEY (idStayTemplate) REFERENCES STAYTEMPLATE (idStayTempl))";
 	     	
 	 	        	pst = conn.prepareStatement(create);
 	 	        	pst.executeUpdate();//fine creazione*/
 	 	        	
 	 	        	
-	 	        	
-	 	        	
-	 	        	
+	 	        		 	        		 	       
 	 	
 	        	
 	        	
@@ -164,10 +165,7 @@ public class DBAgenzia {
 	 	        	
 	 	        	
 	 	        	
-	 	        	
-	 	        	
-	 	        	
-	 	        	
+	        	
 	 	        	
 	 					        	
  					          //CREA TABELLA opzioni standard, prestabilite dall'agenzia per i singoli leaf

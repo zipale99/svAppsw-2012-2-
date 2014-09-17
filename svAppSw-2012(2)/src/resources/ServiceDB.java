@@ -7,7 +7,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import composite.Itinerary;
+
+import decorator.User;
 import DB.DBconnection;
 
 /**
@@ -65,20 +69,26 @@ public static ElencoAttivitaBean riempiAttDaDB() {
      * @param elenco per gli itinerari
      */
     
-    public static ElencoItineraryBean riempiItDaDB(String startLoc,String endLoc) {
+    public static ArrayList<Itinerary> riempiItDaDB(User user) {
         
     	Connection connessione = DBconnection.getConnection();
     	
-    	ElencoItineraryBean elencoItinerari = new ElencoItineraryBean();
+    	ArrayList <Itinerary> listaIt = new ArrayList<Itinerary>();
+    	
     	//se la connessione è andata a buon fine   	
         try {
             Statement st = connessione.createStatement();
 
-            String sql = "SELECT * FROM itinerario where startloc='"+startLoc+"' and endloc='"+endLoc+"'";
+            String sql = "SELECT * FROM itinerario where creatoruser='"+user+"'";
 
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-            	elencoItinerari.aggiungi(rs.getInt("iditinerario"),rs.getString("creatoruser"),rs.getString("startloc"),rs.getString("endloc"),rs.getInt("durata"),rs.getString("itname"),rs.getString("itdesc"),rs.getString("stato"),rs.getDouble("prezzo"));                 
+            	Itinerary it = new Itinerary(rs.getString("creatoruser"),
+            			rs.getString("startloc"),rs.getString("endloc"),rs.getInt("durata"),
+            			rs.getString("itname"),rs.getString("itdesc"),rs.getString("categoria"),rs.getString("stato"),
+            			rs.getDouble("prezzo"));
+            	it.setId(rs.getInt("iditinerario"));
+            	listaIt.add(it);
             }
             
             st.close();
@@ -87,7 +97,7 @@ public static ElencoAttivitaBean riempiAttDaDB() {
         catch (SQLException ex) {
         	ex.printStackTrace();
         }
-        return elencoItinerari;
+        return listaIt;
     }
     
     
