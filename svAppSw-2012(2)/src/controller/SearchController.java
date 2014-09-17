@@ -16,13 +16,23 @@ public class SearchController {
 	}*/
 	
 	/**
-	 * riempie un ArrayList contenente tutti gli itinerari presenti nel DB aventi startLoc ed endLoc
+	 * riempie un ArrayList contenente tutti gli itinerari presenti nel DB aventi lo stesso username
 	 * @param startLoc
 	 * @param endLoc
 	 * @return
 	 */
-	public static ArrayList<Itinerary> cercaItinerari(User user) {
+	public static ArrayList<Itinerary> searchMyItinerary(User user) {
 		return ServiceDB.riempiItDaDB(user);
+	}
+	
+	/**
+	 * riempie un ArrayList contenente tutti gli itinerari presenti nel DB aventi lo stesso username
+	 * @param startLoc
+	 * @param endLoc
+	 * @return
+	 */
+	public static ArrayList<Itinerary> searchItinerary() {
+		return ServiceDB.searchItinerary();
 	}
 	
 	/**

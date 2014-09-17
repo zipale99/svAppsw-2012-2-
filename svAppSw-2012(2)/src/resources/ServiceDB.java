@@ -105,6 +105,42 @@ public static ElencoAttivitaBean riempiAttDaDB() {
      * @param elenco per gli itinerari
      */
     
+    public static ArrayList<Itinerary> searchItinerary() {
+        
+    	Connection connessione = DBconnection.getConnection();
+    	
+    	ArrayList <Itinerary> listaIt = new ArrayList<Itinerary>();
+    	
+    	//se la connessione è andata a buon fine   	
+        try {
+            Statement st = connessione.createStatement();
+
+            String sql = "SELECT * FROM itinerario";
+
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+            	Itinerary it = new Itinerary(rs.getString("creatoruser"),
+            			rs.getString("startloc"),rs.getString("endloc"),rs.getInt("durata"),
+            			rs.getString("itname"),rs.getString("itdesc"),rs.getString("categoria"),rs.getString("stato"),
+            			rs.getDouble("prezzo"));
+            	it.setId(rs.getInt("iditinerario"));
+            	listaIt.add(it);
+            }
+            
+            st.close();
+            connessione.close();
+        }
+        catch (SQLException ex) {
+        	ex.printStackTrace();
+        }
+        return listaIt;
+    }
+    
+    
+    /**
+     * @param elenco per gli itinerari
+     */
+    
     /*
     public static ElencoItineraryBean riempiStDaDB(String startLoc,String endLoc) {
         
