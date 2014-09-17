@@ -1,0 +1,94 @@
+@CHARSET "UTF-8";
+
+
+
+body {
+	background: #CCC url(img/nuvole4.jpg) repeat top center fixed;
+}
+
+.container {
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 90%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	
+	
+}
+
+.header {
+	text-align: center;
+	background: #D3D3D3;
+	height: 20%;
+	width: 100%;
+	float: left;
+}
+
+.main {
+	height: 65%%;
+}
+
+.content {
+	
+	background: white;
+	float: left;
+	width: 59%;
+	height: 100%;
+	margin-right: 1%;
+	margin-bottom:1%;
+	padding: 1%;
+	padding-bottom:100px;
+	position: relative;
+}
+
+.content h3 {
+	text-align: center;
+}
+
+
+.contentImg img {
+	margin-top:5%;
+	margin-left: 5%;
+	width: 60%;
+	height: 30%;
+}
+
+.content table
+{
+	border-collapse: separate;
+	border-spacing: 1,5px;
+	font-size: 13px;
+	text-align: left;
+}
+
+.content th, td {
+	border: solid 1px black;
+	vertical-align: inherit;
+	padding: 5px;
+}
+
+.content th {
+	text-align: center;
+	
+}
+
+.sidenav {
+	background: #CEBDA1;
+	float: right;
+	width: 36%;
+	padding: 1%;
+}
+
+
+.footer {
+	width: 100%;
+	background: #D3D3D3;
+	margin-top: 1%;
+	clear: both;
+	text-align: center;
+}
+
+
+
+
