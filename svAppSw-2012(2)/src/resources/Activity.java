@@ -14,7 +14,7 @@ public class Activity {
     String location;
     String desc;
     int durata;
-    float price;
+    double price;
     int timeOffset;
     boolean obbligatoria; //Verificare quale tipo restituisce il db.
 
@@ -29,6 +29,10 @@ public class Activity {
 		this.timeOffset = timeOffset;
 		this.obbligatoria = obbligatoria;
 	}
+    
+    public Activity() {
+    	
+    }
 
 
 	public int getIdActivity() {
@@ -81,12 +85,12 @@ public class Activity {
 	}
 
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
