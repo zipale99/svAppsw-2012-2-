@@ -115,7 +115,7 @@ public class DBAgenzia {
 	 	        			"idStay INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"+
 	 		    	 		"idItinerario integer not null"+
 	 	        			"idStayTemplate integer not null,"+
-	 		    	   	    "timeOffsea<t integer not null,"+
+	 		    	   	    "timeOffset integer not null,"+
 	 	        			"prezzo float(10) not null,"+
 	 		    	    		        
 	 		     		    "PRIMARY KEY (idStay),"+

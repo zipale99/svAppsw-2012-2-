@@ -39,11 +39,11 @@ public class ServiceDB {
         return "";
 	 }
 	
-public static ElencoAttivitaBean riempiAttDaDB() {
+public static ArrayList<Activity> searchActivity() {
         
     	Connection connessione = DBconnection.getConnection();
     	
-    	ElencoAttivitaBean elencoAttivita = new ElencoAttivitaBean();
+    	ArrayList <Activity> listaIt = new ArrayList<Activity>();
     	//se la connessione è andata a buon fine   	
         try {
             Statement st = connessione.createStatement();
@@ -52,7 +52,9 @@ public static ElencoAttivitaBean riempiAttDaDB() {
 
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-            	elencoAttivita.aggiungi(rs.getInt("id"),rs.getString("tipo"),rs.getString("citta"),rs.getString("descrizione"),rs.getInt("durata"),rs.getFloat("prezzo"));
+            	Activity att = new Activity(rs.getInt("id"),rs.getString("tipo"),
+            			rs.getString("citta"),rs.getString("descrizione"),
+            			rs.getInt("durata"),rs.getFloat("prezzo"));
             }
             
             st.close();
@@ -79,7 +81,7 @@ public static ElencoAttivitaBean riempiAttDaDB() {
         try {
             Statement st = connessione.createStatement();
 
-            String sql = "SELECT * FROM itinerario where creatoruser='"+user+"'";
+            String sql = "SELECT * FROM itinerario where creatoruser='"+user.getUsername()+"'";
 
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {

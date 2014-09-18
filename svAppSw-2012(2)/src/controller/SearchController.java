@@ -11,9 +11,9 @@ public class SearchController {
 	/**
 	 * riempie un ArrayList contenente tutte le attivita presenti nel DB
 	 */
-	/*public static ElencoAttivitaBean cercaAttivita(){		
-		return ServiceDB.riempiAttDaDB();
-	}*/
+	public static ArrayList<Activity> searchActivity(){		
+		return ServiceDB.searchActivity();
+	}
 	
 	/**
 	 * riempie un ArrayList contenente tutti gli itinerari presenti nel DB aventi lo stesso username
