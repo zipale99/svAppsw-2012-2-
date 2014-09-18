@@ -1,9 +1,6 @@
 <%@page import="resources.*"%>
+<%@page import="decorator.*"%>
 <%@page import="composite.Itinerary"%>
-<jsp:useBean id="elencoItinerari"
-             class="resources.ElencoItineraryBean"
-             scope="session" />
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,9 +14,10 @@
 				
 				<table>
 	            <%
+	            ProxyUser pu = (ProxyUser)session.getAttribute("proxy");
 
             		int pos=0;
-                	for (Itinerary it : elencoItinerari.getElencoItinerari()) {               		
+                	for (Itinerary it : pu.getUser().getItineraryList()) {               		
                 		// link per le azioni                    		
         	            out.print("<tr><th>USER</th><td><B>"+it.getUser()+"</B>");
                         out.print("</td><td><a href=\"Controller?operaz=eliminaIt&pos="+pos+
@@ -42,7 +40,8 @@
                     
                     	pos++;                    		        	            
                 	}
-
+                	
+                	
             	%>
     		</table>
 

@@ -119,6 +119,10 @@ public class DecoratorTest {
 		System.out.println("\nQual'è il tuo ruolo adesso?");
 		System.out.println("\nil mio ruolo è "+role);
 		
+		Object o;
+		Object t = new Object();
+		o = t;
+		
 		/*
 		 * TO-DO_2: PATTERN GRASP CONTROLLER (managementController, searchController)
 		 */

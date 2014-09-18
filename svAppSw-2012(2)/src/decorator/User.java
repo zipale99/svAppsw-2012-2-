@@ -7,6 +7,12 @@
  */
 package decorator;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import resources.ServiceDB;
+import composite.Itinerary;
+
 /**
  * @author Alessandro
  *
@@ -16,17 +22,35 @@ public class User extends AbstractUser{
 	String username;
 	String pwd;
 	String ruolo;
+	List<Itinerary> itineraryList;
 	
 	public User(String username, String pwd, String ruolo) {
 		this.username = username;
 		this.pwd = pwd;
 		this.ruolo = ruolo;
+		this.itineraryList = new ArrayList<Itinerary>();
 	}
 	
 	public User() {
 		username = null;
 		pwd = null;
-		ruolo = null;		
+		ruolo = null;
+	}
+	
+	public List<Itinerary> getItineraryList() {
+		return itineraryList;
+	}
+
+	public void setItineraryList(List<Itinerary> itineraryList) {
+		this.itineraryList = itineraryList;
+	}
+	
+	public void recuperaMyItinerary() {
+		this.itineraryList = ServiceDB.riempiItDaDB(this);
+	}
+	
+	public void searchItinerary() {
+		this.itineraryList = ServiceDB.searchItinerary();
 	}
 
 	@Override
